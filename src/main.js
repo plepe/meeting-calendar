@@ -3,19 +3,21 @@ const timeGridPlugin = require('@fullcalendar/timegrid').default
 
 const httpGetJSON = require('./httpGetJSON')
 
-document.addEventListener('DOMContentLoaded', function() {
-  httpGetJSON('GET', 'events.json', null, (err, result) => {
+global.meetingCalendar = function (param) {
+  httpGetJSON('GET', param.events, null, (err, result) => {
     if (err) {
       alert(err)
     }
 
-    console.log(result)
-    startup(result)
+    startup(param, result)
   })
-})
+}
 
-function startup (events) {
-  var calendarEl = document.getElementById('calendar')
+function startup (param, events) {
+  let calendarEl = param.dom
+  if (typeof calendarEl === 'string') {
+    calendarEl = document.getElementById(calendarEl)
+  }
 
   events = events.sort(ev => ev.start)
   let firstDate = events[0].start
