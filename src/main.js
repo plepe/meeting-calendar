@@ -1,9 +1,20 @@
 const Calendar = require('@fullcalendar/core').Calendar
 const timeGridPlugin = require('@fullcalendar/timegrid').default
 
-let events = require('../events.json')
+const httpGetJSON = require('./httpGetJSON')
 
 document.addEventListener('DOMContentLoaded', function() {
+  httpGetJSON('GET', 'events.json', null, (err, result) => {
+    if (err) {
+      alert(err)
+    }
+
+    console.log(result)
+    startup(result)
+  })
+})
+
+function startup (events) {
   var calendarEl = document.getElementById('calendar')
 
   events = events.sort(ev => ev.start)
@@ -35,4 +46,4 @@ document.addEventListener('DOMContentLoaded', function() {
   })
 
   calendar.render()
-})
+}
