@@ -6,14 +6,27 @@ let events = require('../events.json')
 document.addEventListener('DOMContentLoaded', function() {
   var calendarEl = document.getElementById('calendar')
 
+  events = events.sort(ev => ev.start)
+  let firstDate = events[0].start
+  let lastDate = events[events.length - 1].end
+
   var calendar = new Calendar(calendarEl, {
     plugins: [ timeGridPlugin ],
-    defaultView: 'timeGridWeek',
+    defaultView: 'timeGridCustom',
     minTime: '08:00:00',
     maxTime: '21:00:00',
-    firstDay: 1,
     events,
-    defaultDate: events[0].start
+    defaultDate: firstDate,
+    views: {
+      timeGridCustom: {
+        type: 'timeGrid',
+        visibleRange: {
+          start: firstDate,
+          end: lastDate
+        },
+        buttonText: 'Full duration'
+      }
+    }
   })
 
   calendar.render()

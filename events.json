@@ -12,5 +12,12 @@
     "end": "2019-06-26 13:00",
     "color": "red",
     "textColor": ""
+  },
+  {
+    "title": "Travelling back to Vienna",
+    "start": "2019-06-28 09:00",
+    "end": "2019-06-28 12:00",
+    "color": "",
+    "textColor": ""
   }
 ]
