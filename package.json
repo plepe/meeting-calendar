@@ -1,4 +1,7 @@
 {
+  "name": "meeting-calendar",
+  "version": "0.1.0",
+  "description": "Include a meeting calendar in a website. It is based on [FullCalendar](https://fullcalendar.io/).",
   "scripts": {
     "build": "browserify src/main.js -o dist/meeting-calendar.js",
     "watch": "watchify --debug src/main.js -o dist/meeting-calendar.js -v"
@@ -10,5 +13,9 @@
   "devDependencies": {
     "browserify": "^16.2.3",
     "watchify": "^3.11.1"
-  }
+  },
+  "main": "src/main.js",
+  "repository": "https://github.com/plepe/meeting-calendar",
+  "author": "Stephan Bösch-Plepelits <skunk@xover.mud.at>",
+  "license": "GPL-3.0"
 }
